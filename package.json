@@ -2,7 +2,7 @@
   "name": "wagonpanic",
   "version": "1.0.0",
   "private": true,
-  "description": "Jednoduchý web a hratelná ukázka železniční hry Wagon Panic.",
+  "description": "Jednoduchý HTML web železniční hry Wagon Panic s Privacy Policy.",
   "scripts": {
     "start": "python3 -m http.server 8000 --bind 127.0.0.1",
     "check": "node --check app.js"
