@@ -1,0 +1,11 @@
+{
+  "name": "wagonpanic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jednoduchý web a hratelná ukázka železniční hry Wagon Panic.",
+  "scripts": {
+    "start": "python3 -m http.server 8000 --bind 127.0.0.1",
+    "check": "node --check app.js"
+  },
+  "type": "commonjs"
+}
