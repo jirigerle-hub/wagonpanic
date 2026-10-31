@@ -3,134 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#183e36">
-    <meta name="description" content="Malé nádraží, velká výzva. Vyzkoušejte Wagon Panic: přepínejte výhybky a posílejte barevné vagony do správného depa.">
-    <title>Wagon Panic — Malé nádraží. Velká výzva.</title>
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23183e36'/%3E%3Cpath d='M16 18h32v25H16z' fill='%23f4b75b'/%3E%3Cpath d='M22 24h8v9h-8zm13 0h8v9h-8z' fill='%23183e36'/%3E%3Cpath d='m22 51 5-8m15 8-5-8' stroke='%23f4b75b' stroke-width='4'/%3E%3C/svg%3E">
+    <meta name="description" content="Wagon Panic – železniční logická hra.">
+    <title>Wagon Panic</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="app.js" defer></script>
   </head>
   <body>
-    <a class="skip-link" href="#hra">Přejít ke hře</a>
-    <header class="site-header wrap">
-      <a class="brand" href="#" aria-label="Wagon Panic — úvod">
-        <span class="brand-icon" aria-hidden="true">▥</span>
-        <span>WAGON<span class="brand-light">PANIC</span><span class="brand-dot">.</span></span>
-      </a>
-      <nav aria-label="Hlavní navigace">
-        <a href="#jak-hrat">Jak se hraje</a>
-        <a href="#o-hre">O hře</a>
-        <a class="nav-play" href="#hra">Jdeme na trať <span aria-hidden="true">↗</span></a>
-      </nav>
-    </header>
-
     <main>
-      <section class="hero wrap" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow"><span class="status-dot"></span> PRO VŠECHNY, KDO MILUJÍ KOLEJE</p>
-          <h1 id="hero-title">Malé nádraží.<br>Velká <span>panika.</span></h1>
-          <p class="hero-description">Pár kolejí. Spousta vagonů. A ty za výhybkou.<br class="desktop-break"> Pošli každý vagon na správné místo a udrž nádraží v pohybu.</p>
-          <a class="button primary" href="#hra">Zahrát si zdarma <span aria-hidden="true">↗</span></a>
-          <p class="hero-note"><span aria-hidden="true">✓</span> Přímo v prohlížeči <span class="note-divider">/</span> Bez stahování <span class="note-divider">/</span> Bez registrace</p>
-        </div>
-        <div class="hero-ticket" aria-hidden="true">
-          <div class="ticket-top"><span>JÍZDENKA DO POHODY</span><span>№ 008</span></div>
-          <div class="ticket-route"><span>CHAOS</span><span class="ticket-line">········· →</span><span>POŘÁDEK</span></div>
-          <div class="ticket-bottom"><span>1 HRÁČ · 8 VAGONŮ</span><span>∞ POKUSŮ</span></div>
-        </div>
-        <div class="hero-side" aria-hidden="true">ŽÁDNÝ SPĚCH. TEDY… SKORO.</div>
-      </section>
-
-      <section id="hra" class="game-section wrap" aria-labelledby="game-title">
-        <div class="section-topline"><h2 id="game-title"><span class="status-dot"></span> Tvoje první směna</h2><span class="section-meta">INTERAKTIVNÍ UKÁZKA <span aria-hidden="true">↙</span></span></div>
-        <div class="game-shell">
-          <div class="game-toolbar">
-            <div class="station-name"><span class="station-icon" aria-hidden="true">⌁</span><div><strong>Nádraží Zelená louka</strong><span>Malá stanice, velké možnosti</span></div></div>
-            <div class="game-stats">
-              <div><span>DORUČENO</span><strong><span id="delivered">0</span><span class="stat-muted"> / 8</span></strong></div>
-              <div><span>SKÓRE</span><strong id="score">000</strong></div>
-              <button class="reset-button" id="reset" type="button" aria-label="Začít směnu znovu" title="Začít znovu">↻</button>
-            </div>
-          </div>
-          <div class="rail-yard">
-            <div class="yard-label"><span class="status-dot"></span> <span id="yard-state">ČEKÁME NA DISPEČERA</span></div>
-            <svg class="yard-map" viewBox="0 0 1000 390" role="img" aria-labelledby="map-title map-description">
-              <title id="map-title">Kolejiště stanice Zelená louka</title>
-              <desc id="map-description">Příjezdová kolej se rozděluje do tří barevných dep: oranžového nahoře, modrého uprostřed a zeleného dole. Výhybku ovládáte tlačítky pod mapou.</desc>
-              <defs>
-                <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1" fill="#cfd6c8" opacity=".7"/></pattern>
-                <g id="tree"><circle r="16" fill="#d0dbc2"/><circle cx="-5" cy="-4" r="11" fill="#bbcdaa"/><path d="M0 3v18" stroke="#93a785" stroke-width="3"/></g>
-              </defs>
-              <rect width="1000" height="390" fill="url(#grid)"/>
-              <path d="M0 330H1000M150 0V390" stroke="#e2e5da" stroke-width="20" opacity=".6"/>
-              <g aria-hidden="true">
-                <use href="#tree" x="68" y="80"/><use href="#tree" x="105" y="104"/><use href="#tree" x="58" y="124"/>
-                <use href="#tree" x="436" y="66"/><use href="#tree" x="466" y="49"/>
-                <use href="#tree" x="630" y="315"/><use href="#tree" x="662" y="330"/><use href="#tree" x="694" y="309"/>
-                <use href="#tree" x="935" y="175"/><use href="#tree" x="952" y="205"/>
-                <rect x="230" y="269" width="100" height="49" rx="4" fill="#dadccf"/>
-                <path d="m222 273 58-32 58 32" fill="#c4c9b8"/>
-                <rect x="247" y="282" width="17" height="19" rx="2" fill="#b4beaa"/><rect x="279" y="282" width="17" height="19" rx="2" fill="#b4beaa"/>
-                <text x="280" y="341" class="map-label" text-anchor="middle">STAVĚDLO 01</text>
-                <path d="M749 33h133v61H749z" fill="#e8cfaf"/><path d="m738 38 78-24 78 24" fill="#d9bb96"/>
-                <path d="M749 140h133v61H749z" fill="#c5d6dd"/><path d="m738 145 78-24 78 24" fill="#aec7d0"/>
-                <path d="M749 247h133v61H749z" fill="#cbd7b8"/><path d="m738 252 78-24 78 24" fill="#b4c69c"/>
-              </g>
-              <g fill="none" stroke-linecap="round">
-                <path d="M55 195H350C450 195 465 88 570 88H864 M350 195H864 M350 195C450 195 465 302 570 302H864" stroke="#c9cebf" stroke-width="23"/>
-                <path d="M55 195H350C450 195 465 88 570 88H864 M350 195H864 M350 195C450 195 465 302 570 302H864" stroke="#8e9c89" stroke-width="13" stroke-dasharray="2 11" stroke-linecap="butt"/>
-                <path d="M55 190H350C450 190 465 83 570 83H864 M55 200H350C450 200 465 93 570 93H864 M350 190H864 M350 200H864 M350 190C450 190 465 297 570 297H864 M350 200C450 200 465 307 570 307H864" stroke="#6e8174" stroke-width="2"/>
-                <path id="route-0" d="M120 195H350C450 195 465 88 570 88H808" class="route-line selected"/>
-                <path id="route-1" d="M120 195H808" class="route-line"/>
-                <path id="route-2" d="M120 195H350C450 195 465 302 570 302H808" class="route-line"/>
-              </g>
-              <g aria-hidden="true">
-                <rect x="772" y="60" width="87" height="33" rx="4" fill="#b86736"/><text x="815" y="81" class="depot-text" text-anchor="middle">A · ORANŽOVÉ</text>
-                <rect x="772" y="167" width="87" height="33" rx="4" fill="#477e99"/><text x="815" y="188" class="depot-text" text-anchor="middle">B · MODRÉ</text>
-                <rect x="772" y="274" width="87" height="33" rx="4" fill="#607e47"/><text x="815" y="295" class="depot-text" text-anchor="middle">C · ZELENÉ</text>
-                <circle cx="350" cy="195" r="23" fill="#f5f3e9" stroke="#c6cebd" stroke-width="2"/>
-                <path id="switch-arrow" d="m339 200 12-12h11m-6-5 6 5-6 5" fill="none" stroke="#285347" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M98 171v-30" stroke="#879782" stroke-width="4"/><rect x="90" y="123" width="16" height="25" rx="6" fill="#355749"/><circle cx="98" cy="131" r="4" fill="#a9c987"/>
-                <text x="109" y="235" class="map-label">PŘÍJEZD</text>
-                <g id="wagon" transform="translate(160 195)">
-                  <rect x="-29" y="10" width="58" height="5" rx="2" fill="#000" opacity=".12"/>
-                  <rect x="-25" y="-15" width="8" height="30" rx="3" fill="#3d4e43"/><rect x="17" y="-15" width="8" height="30" rx="3" fill="#3d4e43"/>
-                  <rect id="wagon-body" x="-32" y="-12" width="64" height="24" rx="5" fill="#c87943" stroke="#a15a30" stroke-width="2"/>
-                  <path d="M-20-9V9M-10-9V9M0-9V9M10-9V9M20-9V9" stroke="#fff" stroke-opacity=".2" stroke-width="2"/>
-                  <text id="wagon-letter" y="4" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">A</text>
-                </g>
-              </g>
-            </svg>
-            <div class="map-caption"><span aria-hidden="true">⌖</span> ZELENÁ LOUKA <span class="map-caption-right">50°06′ N &nbsp; 14°25′ E</span></div>
-          </div>
-          <div class="game-controls">
-            <div class="routing"><span class="control-label">SMĚR VÝHYBKY</span><div class="route-buttons" role="group" aria-label="Směr výhybky">
-              <button type="button" data-route="0" aria-pressed="true"><span class="color-dot orange"></span>A <span class="route-name">Oranžové</span></button>
-              <button type="button" data-route="1" aria-pressed="false"><span class="color-dot blue"></span>B <span class="route-name">Modré</span></button>
-              <button type="button" data-route="2" aria-pressed="false"><span class="color-dot green"></span>C <span class="route-name">Zelené</span></button>
-            </div></div>
-            <button class="button primary dispatch-button" id="dispatch" type="button">Spustit směnu <span aria-hidden="true">→</span></button>
-          </div>
-          <div class="game-message"><span class="info-icon" aria-hidden="true">i</span><p id="game-status" role="status" aria-live="polite" aria-atomic="true">Nádraží je tvoje. Spusť směnu a doveď 8 vagonů do správných dep.</p></div>
-        </div>
-        <noscript><p class="noscript">Pro hratelnou ukázku je potřeba zapnout JavaScript. Pravidla hry najdete níže.</p></noscript>
-        <p class="game-footnote"><span aria-hidden="true">↳</span> Trocha soustředění. Správná výhybka. Ten příjemný pocit, když všechno klapne.</p>
-      </section>
-
-      <section id="jak-hrat" class="how-to wrap" aria-labelledby="how-title">
-        <div class="how-heading"><p class="eyebrow">JEDNODUCHÝ PRINCIP. JEŠTĚ JEDEN POKUS.</p><h2 id="how-title">Tři kroky k čisté trati.</h2><p>Dispečerský průkaz nepotřebuješ.<br>Stačí postřeh a trochu rozvahy.</p></div>
-        <div class="steps">
-          <article class="step"><span class="step-number">01</span><div class="step-symbol wagons-symbol" aria-hidden="true"><i></i><i></i><i></i></div><h3>Sleduj vagony</h3><p>Barva a písmeno vagonu ti napoví, do kterého depa patří.</p></article>
-          <article class="step"><span class="step-number">02</span><div class="step-symbol" aria-hidden="true"><svg width="38" height="38" viewBox="0 0 38 38"><path d="M19 35V4M19 26C19 15 5 18 5 5M19 26C19 15 33 18 33 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></div><h3>Přepni výhybku</h3><p>Vyber kolej A, B nebo C a připrav vagonu správnou cestu.</p></article>
-          <article class="step"><span class="step-number">03</span><div class="step-symbol check-symbol" aria-hidden="true">✓</div><h3>Pošli ho domů</h3><p>Odešli vagon. Za každé správné doručení získáš 100 bodů.</p></article>
-        </div>
-      </section>
-      <section id="o-hre" class="about wrap" aria-labelledby="about-title">
-        <div class="about-icon" aria-hidden="true">▥</div>
-        <div><p class="eyebrow">MALÁ HRA PRO VELKÉ MILOVNÍKY VLAKŮ</p><h2 id="about-title">Méně shonu. Více kolejí.</h2><p>Wagon Panic je malá železniční logická hra inspirovaná světem dispečerských her, jako je Rail Dispatch. Žádný časový limit, žádné složité návody. Jen ty, výhybky a radost ze správně doručeného vagonu.</p></div>
-        <a class="about-link" href="#hra">Další směna? <span aria-hidden="true">↗</span></a>
-      </section>
+      <h1>Wagon Panic</h1>
+      <p>Vítejte na stránce železniční logické hry Wagon Panic.</p>
+      <p>Malé nádraží, barevné vagony a správně nastavené výhybky.</p>
     </main>
-    <footer class="site-footer wrap"><a class="brand footer-brand" href="#">WAGON<span class="brand-light">PANIC</span><span class="brand-dot">.</span></a><span>Vyrobeno s klidem. Hráno s panikou.</span><a href="privacy-policy.html">Privacy Policy</a><span class="footer-end">Tak zase na kolejích. <span aria-hidden="true">↗</span></span></footer>
+    <footer>
+      <a href="privacy-policy.html" lang="en">Privacy Policy</a>
+    </footer>
   </body>
 </html>
